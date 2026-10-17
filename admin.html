@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#a51f28">
+  <title>Administração do cardápio · Oda Delivery</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-page">
+  <header class="admin-header">
+    <a class="brand" href="index.html" aria-label="Voltar à Oda"><img class="brand-logo" src="img/oda-logo.png" alt="Oda Delivery"></a>
+    <a class="back-link" href="index.html">← Voltar ao cardápio</a>
+  </header>
+  <main class="admin-main">
+    <div class="admin-title"><div><div class="eyebrow"><span></span> ODA DELIVERY · ITANHAÉM</div><h1>Gerenciar <em>cardápio</em></h1><p>Adicione produtos, atualize preços ou organize as categorias.</p></div><button id="reset-catalog" class="text-button">Restaurar exemplos</button></div>
+    <div class="local-warning"><strong>Modo local</strong><span>Alterações salvas neste navegador. Ainda não aparecem para outros clientes nem ficam protegidas por login. Para isso, será preciso conectar um servidor com autenticação.</span></div>
+    <div class="admin-layout">
+      <section class="editor-panel">
+        <div class="panel-heading"><span class="eyebrow"><span></span> PRODUTO</span><h2 id="form-title">Adicionar item</h2></div>
+        <form id="product-form">
+          <input type="hidden" id="product-id">
+          <label>Nome do produto<input id="name" name="name" required maxlength="80" placeholder="Ex.: Yakisoba de frango"></label>
+          <div class="form-row"><label>Categoria<input id="category" name="category" required maxlength="40" list="category-options" placeholder="Ex.: Yakisoba"><datalist id="category-options"></datalist></label><label>Preço (R$)<input id="price" name="price" required type="number" min="0" step="0.01" placeholder="0,00"></label></div>
+          <label>Descrição<textarea id="description" name="description" maxlength="180" rows="3" placeholder="Conte o que vem no produto"></textarea></label>
+          <label>Imagem <span class="optional">(URL)</span><input id="image" name="image" type="url" placeholder="https://..."></label>
+          <label>Selo <span class="optional">(opcional)</span><input id="badge" name="badge" maxlength="24" placeholder="Ex.: MAIS PEDIDO"></label>
+          <div class="form-actions"><button class="save-button" type="submit" id="save-button">Adicionar produto <span>→</span></button><button class="cancel-button" type="button" id="cancel-edit" hidden>Cancelar edição</button></div>
+          <p id="form-message" class="form-message" role="status"></p>
+        </form>
+      </section>
+      <section class="items-panel">
+        <div class="items-heading"><div><span class="eyebrow"><span></span> PRODUTOS CADASTRADOS</span><h2>Seu cardápio <span id="item-count"></span></h2></div><button id="export-catalog" class="text-button">Baixar cópia JSON ↓</button></div>
+        <div id="admin-items" class="admin-items"></div>
+      </section>
+    </div>
+  </main>
+  <script src="js/catalog.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
