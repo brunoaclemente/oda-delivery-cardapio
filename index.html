@@ -20,16 +20,10 @@
   </header>
 
   <main id="inicio">
-    <section class="hero">
-      <div class="hero-copy"><div class="eyebrow"><span></span> O SABOR QUE DÁ VONTADE</div><h1>Seu favorito,<br>feito na <em>hora.</em></h1><p>Yakisoba caprichado, pastel crocante e açaí do seu jeito. Escolha o que bateu vontade e peça com a Oda.</p><a class="hero-cta" href="#cardapio">Ver o cardápio <span>↘</span></a><div class="hero-note"><span class="note-icon">♡</span><span>Preparo fresquinho<br><b>entrega em Itanhaém</b></span></div></div>
-      <div class="hero-visual"><div class="hero-photo"></div><div class="photo-sticker">feito<br><i>na hora!</i></div><div class="photo-caption"><span>Seu pedido, do seu jeito.</span><b>ODA / ITANHAÉM</b></div></div>
-      <div class="hero-index">01 <span>—</span> 03</div>
-    </section>
-
     <section class="menu-section" id="cardapio">
-      <div class="section-heading"><div><div class="eyebrow"><span></span> YAKISOBA · PASTEL · AÇAÍ</div><h2>Deu fome? <em>Tem Oda.</em></h2></div><p>Escolha seu clássico favorito<br>ou descubra um novo pedido.</p></div>
+      <div class="section-heading"><div><div class="eyebrow"><span></span> YAKISOBA · PASTEL · AÇAÍ</div><h2>Monte seu <em>pedido.</em></h2></div><p>Escolha os itens e adicione à sacola.</p></div>
       <div class="menu-tools"><div class="categories" id="categories" role="group" aria-label="Filtrar por categoria"></div><label class="search"><span>⌕</span><input id="search" type="search" placeholder="Buscar no cardápio" aria-label="Buscar no cardápio"><kbd>⌘ K</kbd></label></div>
-      <div class="demo-note"><span>✳</span> Cardápio de demonstração — produtos e preços ilustrativos até a conexão com o banco de dados.</div>
+      <div class="demo-note"><span>&#10038;</span> Fotos dos produtos ser&#227;o adicionadas em breve.</div>
       <div class="product-grid" id="product-grid" aria-live="polite"></div>
     </section>
     <section class="closing" id="sobre"><div class="closing-mark">oda.</div><div><div class="eyebrow"><span></span> ODA DELIVERY · ITANHAÉM</div><h2>Uma pausa gostosa<br><em>no seu dia.</em></h2></div><a href="#cardapio" class="round-link" aria-label="Voltar ao cardápio">↑</a></section>
@@ -45,7 +39,21 @@
   </main>
   <footer><a class="brand footer-brand" href="#inicio" aria-label="Oda Delivery"><img class="brand-logo" src="img/oda-logo.png" alt="Oda Delivery — Itanhaém"></a><span>© 2026 Oda Delivery · Itanhaém</span><span>CNPJ informado: 14.172.573/0001-07</span></footer>
 
-  <div class="cart-backdrop" id="cart-backdrop"></div><aside class="cart-drawer" id="cart-drawer" aria-label="Sua sacola" aria-hidden="true"><div class="drawer-head"><div><span class="eyebrow"><span></span> SEU PEDIDO</span><h2>Sua <em>sacola</em></h2></div><button id="close-cart" class="close-cart" aria-label="Fechar sacola">×</button></div><div class="cart-items" id="cart-items"></div><div class="cart-empty" id="cart-empty"><span>♡</span><p>Sua sacola está esperando<br>por algo gostoso.</p></div><div class="cart-bottom"><div class="total-line"><span>Subtotal</span><b id="cart-total">R$ 0,00</b></div><button class="checkout" id="checkout">Continuar pedido <span>→</span></button><small>Finalização de pedidos ficará disponível após a integração.</small></div></aside>
+  <div class="cart-backdrop" id="cart-backdrop"></div><aside class="cart-drawer" id="cart-drawer" aria-label="Sua sacola" aria-hidden="true">
+    <div class="drawer-head"><div><span class="eyebrow"><span></span> SEU PEDIDO</span><h2 id="drawer-title">Sua <em>sacola</em></h2></div><button id="close-cart" class="close-cart" aria-label="Fechar sacola">&times;</button></div>
+    <div class="cart-items" id="cart-items"></div><div class="cart-empty" id="cart-empty"><span>&#9825;</span><p>Sua sacola est&aacute; esperando<br>por algo gostoso.</p></div>
+    <div class="cart-bottom" id="cart-bottom"><div class="total-line"><span>Subtotal</span><b id="cart-total">R$ 0,00</b></div><button class="checkout" id="checkout">Continuar pedido <span>&rarr;</span></button></div>
+    <form class="checkout-panel" id="checkout-panel" hidden>
+      <button class="back-to-cart" id="back-to-cart" type="button">&larr; Voltar &agrave; sacola</button><div class="checkout-review" id="checkout-review"></div>
+      <label class="form-label" for="customer-name">Seu nome</label><input class="form-input" id="customer-name" name="name" autocomplete="name" placeholder="Como podemos chamar voc&ecirc;?">
+      <label class="form-label" for="payment">Forma de pagamento <span>*</span></label><select class="form-input" id="payment" name="payment" required><option value="">Selecione</option><option>Pix</option><option>Dinheiro</option><option>Cart&atilde;o de cr&eacute;dito</option><option>Cart&atilde;o de d&eacute;bito</option></select>
+      <div class="form-label">Como vai receber? <span>*</span></div><div class="fulfillment-options"><label><input type="radio" name="fulfillment" value="Retirada no local" required> Retirada</label><label><input type="radio" name="fulfillment" value="Entrega" required> Entrega</label></div>
+      <p class="pickup-note" id="pickup-note" hidden>Retirada na Av. Cabu&ccedil;u, 272, Nossa Sra. do Sion, Itanha&eacute;m.</p>
+      <div id="address-fields" hidden><label class="form-label" for="address">Endere&ccedil;o de entrega <span>*</span></label><input class="form-input" id="address" name="address" autocomplete="street-address" placeholder="Rua e n&uacute;mero"><label class="form-label" for="neighborhood">Bairro <span>*</span></label><input class="form-input" id="neighborhood" name="neighborhood" placeholder="Seu bairro"><label class="form-label" for="complement">Complemento</label><input class="form-input" id="complement" name="complement" placeholder="Apto, refer&ecirc;ncia (opcional)"><p class="delivery-fee-note">A taxa de entrega ser&aacute; informada ap&oacute;s o envio da mensagem pelo WhatsApp.</p></div>
+      <div id="change-field" hidden><label class="form-label" for="change-for">Troco para quanto?</label><input class="form-input" id="change-for" inputmode="decimal" placeholder="Ex.: R$ 50,00"></div>
+      <button class="checkout submit-order" type="submit">Continuar no WhatsApp <span>&nearr;</span></button><small class="whatsapp-hint">O WhatsApp abrir&aacute; com o pedido pronto. Depois, &eacute; s&oacute; enviar a mensagem.</small>
+    </form>
+  </aside>
   <script src="js/catalog.js"></script>
   <script src="js/app.js"></script>
 </body>

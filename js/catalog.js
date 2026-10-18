@@ -31,7 +31,7 @@
   }
 
   function imageUrl(image, width = 700) {
-    if (!image) return `https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?auto=format&fit=crop&w=${width}&q=80`;
+    if (!image) return 'img/product-placeholder.svg';
     if (/^https?:\/\//i.test(image)) return image;
     return `https://images.unsplash.com/${image}?auto=format&fit=crop&w=${width}&q=80`;
   }
